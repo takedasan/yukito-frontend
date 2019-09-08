@@ -1,7 +1,7 @@
 <template>
   <div>
-    <h1 style="margin-left:20px">契約社員編集</h1>
-    <el-button type="primary" style="margin-left:20px">保存</el-button>
+    <h1>契約社員編集</h1>
+    <el-button type="primary">保存</el-button>
     <el-card class="box-card">
       <el-form label-width="120px">
         <el-form-item label="顔写真">
