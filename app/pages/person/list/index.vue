@@ -1,29 +1,80 @@
 <template>
   <div>
-    <h1>契約社員一覧</h1>
-    <el-table :data="tableData" style="width: 100%">
-      <el-table-column label="Date" width="180">
+    <el-row>
+      <h1 style="float: left">契約社員一覧</h1>
+      <el-button style="float: right; margin-top: 15px" icon="el-icon-document">
+        エクスポート
+      </el-button>
+    </el-row>
+
+    <el-form :inline="true">
+      <el-form-item>
+        <el-input placeholder="社員番号"></el-input>
+      </el-form-item>
+      <el-form-item>
+        <el-input placeholder="名前"></el-input>
+      </el-form-item>
+      <el-form-item>
+        <el-date-picker
+          type="daterange"
+          range-separator="To"
+          start-placeholder="生年月日 Start"
+          end-placeholder="生年月日 End"
+        ></el-date-picker>
+      </el-form-item>
+      <el-form-item>
+        <el-input placeholder="備考"></el-input>
+      </el-form-item>
+      <el-form-item>
+        <el-button type="primary">検索</el-button>
+      </el-form-item>
+    </el-form>
+    <el-table stripe border height="780" :data="tableData" style="width: 100%">
+      <el-table-column width="80">
+        <router-link to="/person/edit">
+          <el-button size="mini">編集</el-button>
+        </router-link>
+      </el-table-column>
+      <el-table-column label="顔写真" width="110">
         <template slot-scope="scope">
-          <i class="el-icon-time"></i>
-          <span style="margin-left: 10px">{{ scope.row.date }}</span>
+          <img :src="scope.row.imageUrl" class="image" />
         </template>
       </el-table-column>
-      <el-table-column label="Name" width="180">
+      <el-table-column label="社員番号" width="100">
         <template slot-scope="scope">
-          <el-popover trigger="hover" placement="top">
-            <p>Name: {{ scope.row.name }}</p>
-            <p>Addr: {{ scope.row.address }}</p>
-            <div slot="reference" class="name-wrapper">
-              <el-tag size="medium">{{ scope.row.name }}</el-tag>
-            </div>
-          </el-popover>
+          <p>{{ scope.row.staffCode }}</p>
         </template>
       </el-table-column>
-      <el-table-column label="Operations">
-        <template>
-          <el-button size="mini">Edit</el-button>
-          <el-button size="mini" type="danger">Delete</el-button>
+      <el-table-column label="名前" width="140">
+        <template slot-scope="scope">
+          <p>{{ scope.row.name }}</p>
         </template>
+      </el-table-column>
+      <el-table-column label="生年月日" width="110">
+        <template slot-scope="scope">
+          <p>{{ scope.row.birthday }}</p>
+        </template>
+      </el-table-column>
+      <el-table-column label="年齢" width="80">計算</el-table-column>
+      <el-table-column label="連絡先" width="200">
+        <template slot-scope="scope">
+          <p>{{ scope.row.contact }}</p>
+        </template>
+      </el-table-column>
+      <el-table-column label="住所" width="300">
+        <template slot-scope="scope">
+          <p>{{ scope.row.address }}</p>
+        </template>
+      </el-table-column>
+      <el-table-column label="備考">
+        <template slot-scope="scope">
+          <p>{{ scope.row.memo }}</p>
+        </template>
+      </el-table-column>
+      <el-table-column width="170">
+        <el-link type="primary">契約</el-link>
+        <el-link type="primary">労働時間</el-link>
+        <el-link type="primary">支払い</el-link>
       </el-table-column>
     </el-table>
   </div>
@@ -37,24 +88,40 @@ export default Vue.extend({
     return {
       tableData: [
         {
-          date: '2016-05-03',
-          name: 'Tom',
-          address: 'No. 189, Grove St, Los Angeles'
+          imageUrl: 'http://placehold.jp/80x100.png',
+          staffCode: 'A00001',
+          name: 'テスト 太郎',
+          birthday: '2000/01/01',
+          contact: 'taro@test★com',
+          address: '東京都中野区ほにゃほにゃほにゃ',
+          memo: '好きな飲み物は日本茶'
         },
         {
-          date: '2016-05-02',
-          name: 'Tom',
-          address: 'No. 189, Grove St, Los Angeles'
+          imageUrl: 'http://placehold.jp/80x100.png',
+          staffCode: 'A00002',
+          name: 'テスト 次郎',
+          birthday: '2000/01/02',
+          contact: 'jiro@test★com',
+          address: '東京都江東区ほにゃほにゃほにゃ',
+          memo: ''
         },
         {
-          date: '2016-05-04',
-          name: 'Tom',
-          address: 'No. 189, Grove St, Los Angeles'
+          imageUrl: 'http://placehold.jp/80x100.png',
+          staffCode: 'A00003',
+          name: 'テスト 三郎',
+          birthday: '2000/01/03',
+          contact: 'saburo@test★com',
+          address: '東京都渋谷区ほにゃほにゃほにゃ',
+          memo: '好きなおやつはすあま'
         },
         {
-          date: '2016-05-01',
-          name: 'Tom',
-          address: 'No. 189, Grove St, Los Angeles'
+          imageUrl: 'http://placehold.jp/80x100.png',
+          staffCode: 'A00004',
+          name: 'テスト 四郎',
+          birthday: '2000/01/04',
+          contact: 'shiro@test★com',
+          address: '東京都港区ほにゃほにゃほにゃ',
+          memo: ''
         }
       ]
     }
