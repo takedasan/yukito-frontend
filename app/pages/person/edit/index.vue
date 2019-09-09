@@ -16,6 +16,9 @@
             <i v-else class="el-icon-plus avatar-uploader-icon"></i>
           </el-upload>
         </el-form-item>
+        <el-form-item label="社員番号">
+          <el-input></el-input>
+        </el-form-item>
         <el-form-item label="名前">
           <el-input></el-input>
         </el-form-item>
@@ -24,6 +27,15 @@
         </el-form-item>
         <el-form-item label="年齢">
           <el-input></el-input>
+        </el-form-item>
+        <el-form-item label="連絡先">
+          <el-input></el-input>
+        </el-form-item>
+        <el-form-item label="住所">
+          <el-input></el-input>
+        </el-form-item>
+        <el-form-item label="備考">
+          <el-input type="textarea" :rows="3"></el-input>
         </el-form-item>
       </el-form>
     </el-card>

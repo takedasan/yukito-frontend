@@ -6,7 +6,6 @@
         エクスポート
       </el-button>
     </el-row>
-
     <el-form :inline="true">
       <el-form-item>
         <el-input placeholder="社員番号"></el-input>
