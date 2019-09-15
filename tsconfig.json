@@ -26,7 +26,9 @@
     },
     "types": [
       "@types/node",
-      "@nuxt/types"
+      "@nuxt/types",
+      "@firebase/app-types",
+      "@firebase/firestore-types"
     ]
   },
   "exclude": [
