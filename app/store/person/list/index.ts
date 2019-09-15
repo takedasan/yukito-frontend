@@ -1,10 +1,23 @@
-import firebase from 'firebase/app'
-import 'firebase/firestore'
+import { firestoreAction } from 'vuexfire'
+import { db } from '@/plugins/firebase'
 
-// Get a Firestore instance
-export const db = firebase
-  .initializeApp({ projectId: 'MY PROJECT ID' })
-  .firestore()
+interface PersonList {
+  contractEmployees: ContractEmployee[]
+}
 
-const { Timestamp, GeoPoint } = firebase.firestore
-export { Timestamp, GeoPoint }
+export const state: () => PersonList = () => ({
+  contractEmployees: []
+})
+
+export const getters = {
+  getContractEmployees: (state: any) => state.contractEmployees
+}
+
+export const actions = {
+  bindContractEmployees: firestoreAction(({ bindFirestoreRef }) => {
+    return bindFirestoreRef(
+      'contractEmployees',
+      db.collection('contract-employees')
+    )
+  })
+}

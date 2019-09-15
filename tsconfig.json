@@ -18,17 +18,18 @@
     "baseUrl": ".",
     "paths": {
       "~/*": [
-        "./*"
+        "./app/*"
       ],
       "@/*": [
-        "./*"
+        "./app/*"
       ]
     },
     "types": [
       "@types/node",
       "@nuxt/types",
       "@firebase/app-types",
-      "@firebase/firestore-types"
+      "@firebase/firestore-types",
+      "@/types"
     ]
   },
   "exclude": [
