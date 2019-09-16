@@ -1,5 +1,5 @@
-import * as functions from 'firebase-functions'
+const functions = require('firebase-functions')
+const { Nuxt } = require('nuxt')
 
-export const helloWorld = functions.https.onRequest((request, response) => {
-  response.send("Hello from Firebase!\n\n")
-})
+const nuxt = new Nuxt({ buildDir: 'ssr', dev: false })
+exports.ssr = functions.https.onRequest(nuxt.render)
