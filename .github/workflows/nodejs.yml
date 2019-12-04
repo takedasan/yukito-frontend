@@ -31,3 +31,4 @@ jobs:
       env:
         FIREBASE_TOKEN: ${{ secrets.FIREBASE_TOKEN }}
         PROJECT_ID: yukito-backend
+        PROJECT_PATH: ./app 
